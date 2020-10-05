@@ -19,6 +19,5 @@ with app.app_context():
     db.session.add(javier)
     db.session.add(dean)
     db.session.add(angela)
-    db.session.add(soonmi)
     db.session.add(alissa)
     db.session.commit()
