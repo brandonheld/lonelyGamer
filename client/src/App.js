@@ -6,29 +6,29 @@ import Auth from './components/Auth';
 import { setUser } from './store/auth';
 
 function App() {
-  const [loading, setLoading] = useState(true);
-  const dispatch = useDispatch();
+    const [loading, setLoading] = useState(true);
+    const dispatch = useDispatch();
 
-  useEffect(() => {
-    const loadUser = async () => {
-      // enter your back end route to get the current user
-      const res = await fetch("/api/session/current");
-      if (res.ok) {
-        res.data = await res.json(); // current user info - obj with key of user
-        dispatch(setUser(res.data.user));
-      }
-      setLoading(false);
-    }
-    loadUser();
-  }, [dispatch]);
+    useEffect(() => {
+        const loadUser = async () => {
+        // enter your back end route to get the current user
+        const res = await fetch("/api/session/current");
+        if (res.ok) {
+            res.data = await res.json(); // current user info - obj with key of user
+            dispatch(setUser(res.data.user));
+        }
+        setLoading(false);
+        }
+        loadUser();
+    }, [dispatch]);
 
-  if(loading) return null;
-    
-  return (
-    <BrowserRouter>
-      <Auth />
-    </BrowserRouter>
-  );
+    if(loading) return null;
+        
+    return (
+        <BrowserRouter>
+        <Auth />
+        </BrowserRouter>
+    );
 }
 
 export default App;
