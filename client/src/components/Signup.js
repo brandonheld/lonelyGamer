@@ -7,14 +7,14 @@ import { Redirect } from 'react-router-dom';
 function Signup() {
     const currentUserId = useSelector(state => state.auth.id);
     const dispatch = useDispatch();
-        
+    
+    const [count, setCount] = useState(1)
+
     const [form, setForm] = useState({
       email: '',
       username: '',
       password: '',
     })
-
-    const [count, setCount] = useState(1)
     
     const formUpdate  = (e) => {
         setForm({...form, [e.target.name]: e.target.value})

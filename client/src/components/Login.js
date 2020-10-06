@@ -1,66 +1,56 @@
-// import React, { useState } from 'react';
-// import { useDispatch, useSelector } from 'react-redux';
-// import { signup } from '../store/auth'
-// import { Redirect } from 'react-router-dom';
-// import '../css/login.css'
+import React, { useState } from 'react'
+import { useDispatch, useSelector } from 'react-redux';
+import { login } from '../store/auth';
+import { Redirect } from 'react-router-dom';
 
-// function Login() {
-//     const currentUserId = useSelector(state => state.auth.id);
-//     const dispatch = useDispatch();
-    
-//     const [form, setForm] = useState({
-//         email: '',
-//         username: '',
-//         password: '',
-//     })
-    
-//     const formUpdate  = (e) => {
-//         setForm({...form, [e.target.username]: e.target.value})
-//     }
-    
-//     const handleSubmit = e => {
-//         e.preventDefault();
-//         dispatch(signup(form.username.toLowerCase(), form.email.toLowerCase(), form.password));
-//     }
+function Login() {
+    const currentUserId = useSelector(state => state.auth.id);
 
-//     if (currentUserId) return <Redirect to='/' />
-//     return (
-//         <>
-//             <div className="loginContainer">
-//                 <form className='loginContainer__form' onSubmit={handleSubmit}>
-//                 <div>
-//                     <input 
-//                         type='text' 
-//                         name='username' 
-//                         value={form.username} 
-//                         placeholder="Enter username" 
-//                         onChange={formUpdate} 
-//                     />
-//                 </div>
-//                 <div>
-//                     <input 
-//                         type='email' 
-//                         name='email' 
-//                         value={form.email} 
-//                         placeholder="Enter email" 
-//                         onChange={formUpdate} 
-//                     />
-//                 </div>
-//                 <div>
-//                     <input 
-//                         type='password' 
-//                         name='password' 
-//                         value={form.password} 
-//                         placeholder="Enter password" 
-//                         onChange={formUpdate} 
-//                     />
-//                 </div>
-//                 <div>
-//                     <button type='submit' className='loginContainer__loginButton'>Log in</button>
-//                 </div>
-//                 </form>
-//             </div>
-//         </>
-//     )
-// }
-// export default Login;
+    const [username, setUsername] = useState('');
+    const [password, setPassword] = useState('');
+    const dispatch = useDispatch();
+    
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        dispatch(login(username, password))
+    };
+    const demo = e => {
+        e.preventDefault();
+        dispatch(login('demo@demo.com', 'password'))
+    };
+
+    if (currentUserId) return <Redirect to='/' />
+    return (
+        <div className='background'>
+            <div className='loginContainer'>
+                <div className='loginContainer__header'>
+                    <h1>Login</h1>
+                </div>
+                <form className='loginContainer__form' onSubmit={handleSubmit}>
+                    <label className='loginContainer__formLable'>Email address</label>
+                        <input className='loginContainer__formInput'
+                            type="text" 
+                            name="username" 
+                            value={username}
+                            required={true}
+                            autoComplete="off" 
+                            onChange={(e) => setUsername(e.target.value)} 
+                        />
+                    <label className='loginContainer__formLable'>Password</label>
+                        <input className='loginContainer__formInput'
+                            type='password' 
+                            name='password' 
+                            value={password}
+                            required={true}
+                            autoComplete="off"
+                            onChange={(e) => setPassword(e.target.value)} 
+                        />
+                    <button id='signIn' type='submit'>Sign in</button> 
+                    <button id='demoButton' onClick={demo}>Demo</button>
+                </form>  
+            </div>
+        </div>
+    );
+};
+
+export default Login;
