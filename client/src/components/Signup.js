@@ -1,84 +1,82 @@
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { signup } from '../store/auth';
-import { Redirect, Link } from 'react-router-dom';
-import '../css/signup.css'
+import { signup } from '../store/auth'
+import { Redirect } from 'react-router-dom';
 
-let emailDiv = "signup-input";
-let passwordDiv = "signup-input";
 
 function Signup() {
-  const [username, setUsername] = useState('')
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [noInfo, setNoInfo] = useState('');
-  const [noEmail, setNoEmail] = useState('');
-  const [noPassword, setNoPassword] = useState('');
-  const currentUserId = useSelector(state => state.auth.id);
-  const dispatch = useDispatch();
-  const handleSubmit = e => {
-    e.preventDefault();
-    emailDiv = "signup-input";
-    passwordDiv = "signup-input";
-    setNoEmail('');
-    setNoPassword('');
-    setNoInfo('');
-    if (email && password) {
-      dispatch(signup(username, email.toLocaleLowerCase(), password));
-    } else if (!email && password) {
-      emailDiv = "bad-input";
-      setNoEmail("Oi! We're gonna need that email of yours!")
-    } else if (email && !password) {
-      passwordDiv = "bad-input";
-      setNoPassword("What's the password?");
-    } else {
-      emailDiv = "bad-input";
-      passwordDiv = "bad-input";
-      setNoInfo("You can't get in if you're not a member!")
+    const currentUserId = useSelector(state => state.auth.id);
+    const dispatch = useDispatch();
+        
+    const [form, setForm] = useState({
+      email: '',
+      username: '',
+      password: '',
+    })
+
+    const [count, setCount] = useState(1)
+    
+    const formUpdate  = (e) => {
+        setForm({...form, [e.target.name]: e.target.value})
     }
-  }
-  if (currentUserId) return <Redirect to='/' />
-  return (
-    <>
-      <div className='signup_master'>
-        <div className='signup_master-box'>
-          <div className="signup-container">
-            <div className='signup-redirect'>
-              Have and account? <Link to='/login' style={{ textDecoration: 'none', color: 'blue', fontWeight: 'bold' }} > Log in </Link>
+    
+    const handleSubmit = e => {
+        e.preventDefault();
+        dispatch(signup(form.username, form.email, form.password));
+    }
+    
+    if (currentUserId) return <Redirect to='/' />
+    return (
+        <>
+            <div className="signupContainer">
+                <form className='signupContainer__form' onSubmit={handleSubmit}>
+                {count === 1 ? (
+                  <div>
+                    <input 
+                      type='text' 
+                      name='username' 
+                      value={form.username} 
+                      placeholder="Enter username" 
+                      onChange={formUpdate} 
+                    />
+                  </div>
+                ): null}
+                {count === 2 ? (
+                <div>
+                  <input 
+                    type='email' 
+                    name='email' 
+                    value={form.email} 
+                    placeholder="Enter email" 
+                    onChange={formUpdate} 
+                  />
+                </div>
+                ): null}
+                {count === 3 ? (
+                <div>
+                  <input 
+                    type='password' 
+                    name='password' 
+                    value={form.password} 
+                    placeholder="Enter password" 
+                    onChange={formUpdate} 
+                  />
+                </div>
+                ): null}
+                {count === 3 ? (
+                <div>
+                    <button type='submit' className='signupContainer__signupButton'>Create Profile</button>
+                </div>
+                ): null}
+                </form>
+                <div>
+                    <button className='signupContainer__backButton' onClick={() => setCount(count - 1)} disabled={count < 2}>Back</button>
+                </div>
+                <div>
+                    <button className='signupContainer__nextButton' onClick={() => setCount(count + 1)} disabled={count > 2}>Next</button>
+                </div>
             </div>
-            <div className="signup-container-box">
-              <form className='form_container' onSubmit={handleSubmit}>
-                <div className='signup-label'>
-                  Sign up
-                </div>
-                <div>
-                  <input type='text' className={emailDiv} name='username' value={username} placeholder="Username" onChange={e => setUsername(e.target.value)} />
-                </div>
-                <div>
-                  <span style={{ color: 'red' }}>{noInfo}</span>
-                  <input type='email' className={emailDiv} name='email' value={email} placeholder="Email" onChange={e => setEmail(e.target.value)} />
-                </div>
-                <div>
-                  <span style={{ color: 'red' }}>{noInfo}</span>
-                  <input type='email' className={emailDiv} name='email' value={email} placeholder="Re-enter Email" onChange={e => setEmail(e.target.value)} />
-                </div>
-                <span style={{ color: 'red' }}>{noEmail}</span>
-                <div>
-                  <input type='password' className={passwordDiv} name='password' value={password} placeholder='Password' onChange={e => setPassword(e.target.value)} />
-                </div>
-                <span style={{ color: 'red' }}>{noPassword}</span>
-                <div>
-                  <input type='password' className={passwordDiv} name='password' value={password} placeholder='Re-Enter Password' onChange={e => setPassword(e.target.value)} />
-                </div>
-                <div>
-                  <button type='submit' className='signup-button'>Create account</button>
-                </div>
-              </form>
-            </div>
-          </div>
-        </div>
-      </div>
-    </>
-  )
+        </>
+    )
 }
 export default Signup;

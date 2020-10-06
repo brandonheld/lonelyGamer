@@ -1,66 +1,66 @@
-import React, { useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { login } from '../store/auth'
-import { Redirect, Link } from 'react-router-dom';
-import '../css/login.css'
+// import React, { useState } from 'react';
+// import { useDispatch, useSelector } from 'react-redux';
+// import { signup } from '../store/auth'
+// import { Redirect } from 'react-router-dom';
+// import '../css/login.css'
 
-function Login() {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [noEmail, setNoEmail] = useState('');
-  const [noPassword, setNoPassword] = useState('');
-  const currentUserId = useSelector(state => state.auth.id);
+// function Login() {
+//     const currentUserId = useSelector(state => state.auth.id);
+//     const dispatch = useDispatch();
+    
+//     const [form, setForm] = useState({
+//         email: '',
+//         username: '',
+//         password: '',
+//     })
+    
+//     const formUpdate  = (e) => {
+//         setForm({...form, [e.target.username]: e.target.value})
+//     }
+    
+//     const handleSubmit = e => {
+//         e.preventDefault();
+//         dispatch(signup(form.username.toLowerCase(), form.email.toLowerCase(), form.password));
+//     }
 
-  const dispatch = useDispatch();
-  let emailDiv = "form-input";
-  let passwordDiv = "form-input";
-  const handleSubmit = e => {
-    e.preventDefault();
-    setNoEmail('');
-    setNoPassword('');
-    if (email && password) {
-      dispatch(login(email.toLocaleLowerCase(), password));
-    } else if (!email && password) {
-      emailDiv = "bad-input";
-      setNoEmail("Oi! We're gonna need that email of yours!")
-    } else if (email && !password) {
-      passwordDiv = "bad-input";
-      setNoPassword("What's the password?");
-    }
-  }
-
-  const demo = e => {
-    e.preventDefault();
-    dispatch(login('demo@moneypit.com', 'password'))
-  };
-  if (currentUserId) return <Redirect to='/' />
-  return (
-    <>
-      <div className='loginWrapper'>
-          <div className="loginContainer">
-            <div id='loginLabel'>
-              Log in
-            </div>
-            <form className='loginContainer__form' onSubmit={handleSubmit}>
-              <div>
-                <span style={{ color: 'red' }}>{noEmail}</span>
-                <input type='email' className={emailDiv} name='email' value={email} placeholder="Email" onChange={e => setEmail(e.target.value)} />
-              </div>
-              <div>
-                <input type='password' className={passwordDiv} name='password' value={password} placeholder='Password' onChange={e => setPassword(e.target.value)} />
-              </div>
-              <span style={{ color: 'red' }}>{noPassword}</span>
-              <div>
-                <button type='submit' className='loginContainer__loginButton'>Log in</button>
-              </div>
-              <button className='loginContainer__loginButton' onClick={demo}>Demo Log in</button>
-            </form>
-            <div id='redirect'>
-              New to Kickstarter? <Link to="/signup" style={{ textDecoration: 'none', color: 'blue', fontWeight: 'bold' }} > Sign up </Link>
-            </div>
-          </div>
-        </div>
-    </>
-  )
-}
-export default Login;
+//     if (currentUserId) return <Redirect to='/' />
+//     return (
+//         <>
+//             <div className="loginContainer">
+//                 <form className='loginContainer__form' onSubmit={handleSubmit}>
+//                 <div>
+//                     <input 
+//                         type='text' 
+//                         name='username' 
+//                         value={form.username} 
+//                         placeholder="Enter username" 
+//                         onChange={formUpdate} 
+//                     />
+//                 </div>
+//                 <div>
+//                     <input 
+//                         type='email' 
+//                         name='email' 
+//                         value={form.email} 
+//                         placeholder="Enter email" 
+//                         onChange={formUpdate} 
+//                     />
+//                 </div>
+//                 <div>
+//                     <input 
+//                         type='password' 
+//                         name='password' 
+//                         value={form.password} 
+//                         placeholder="Enter password" 
+//                         onChange={formUpdate} 
+//                     />
+//                 </div>
+//                 <div>
+//                     <button type='submit' className='loginContainer__loginButton'>Log in</button>
+//                 </div>
+//                 </form>
+//             </div>
+//         </>
+//     )
+// }
+// export default Login;
