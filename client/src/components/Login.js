@@ -9,12 +9,12 @@ function Login() {
     const history = useHistory();
 
     const currentUserId = useSelector(state => state.auth.id);
-    const [username, setUsername] = useState('');
+    const [email, setEmailname] = useState('');
     const [password, setPassword] = useState('');
     
     const handleSubmit = (e) => {
         e.preventDefault();
-        dispatch(login(username, password))
+        dispatch(login(email, password))
     };
 
     const signup = e => {
@@ -33,12 +33,12 @@ function Login() {
                 <form className='loginContainer__form' onSubmit={handleSubmit}>
                     <label className='loginContainer__formLable'>Email address</label>
                         <input className='loginContainer__formInput'
-                            type="text" 
-                            name="username" 
-                            value={username}
+                            type="email" 
+                            name="email" 
+                            value={email}
                             required={true}
                             autoComplete="off" 
-                            onChange={(e) => setUsername(e.target.value)} 
+                            onChange={(e) => setEmailname(e.target.value)} 
                         />
                     <label className='loginContainer__formLable'>Password</label>
                         <input className='loginContainer__formInput'

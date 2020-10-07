@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { signup } from '../store/auth'
 import { Redirect, useHistory } from 'react-router-dom';
@@ -8,6 +8,8 @@ function Signup() {
     const currentUserId = useSelector(state => state.auth.id);
     const dispatch = useDispatch();
     const history = useHistory();
+    
+    
 
     const [count, setCount] = useState(1)
 
@@ -16,7 +18,7 @@ function Signup() {
       username: '',
       password: '',
     })
-    
+
     const formUpdate  = (e) => {
         e.preventDefault()
         setForm({...form, [e.target.name]: e.target.value})
@@ -27,33 +29,48 @@ function Signup() {
         dispatch(signup(form.username, form.email, form.password));
     }
     
-    window.addEventListener('keydown',function(e){if(e.keyIdentifier==='U+000A'||e.keyIdentifier==='Enter'||e.keyCode===13)
-        {if(e.target.nodeName==='INPUT'&&(e.target.type==='text'||e.target.type==='email'))
-        {e.preventDefault();return false;}}
-    },true);
-
     const login = e => {
         e.preventDefault();
         history.push(`/login`)
     }
-    function createSquare(){
+    
+    const createSquare = () => {
         const section = document.querySelector('section');
         const square = document.createElement('span');
-
+        
         let size = Math.random() * 50;
-
+        
         square.style.width = 20 + size + 'px';
         square.style.height = 20 + size + 'px';
         square.style.top = Math.random() * window.innerHeight + 'px';
         square.style.left = Math.random() * window.innerWidth + 'px';
-
-        section.appendChild(square);
+        
+        // if(section) {
+            section.appendChild(square);
+        // } else {
+        //     return null
+        // }
         setTimeout(() => {
             square.remove()
         }, 5000)
     }
+    const noEnter = (e) => {
+        if(e.keyIdentifier==='U+000A'||e.keyIdentifier==='Enter'||e.keyCode===13)
+            {if(e.target.nodeName==='INPUT'&&(e.target.type==='text'||e.target.type==='email'))
+            {e.preventDefault();return false;}}
+        
+    }
+    useEffect(() => {
+        window.addEventListener('keydown',noEnter)
 
-    setInterval(createSquare, 150);
+        const interval = setInterval(createSquare, 150);
+
+        return () => {
+            clearInterval(interval);
+            window.removeEventListener('keydown', noEnter);
+        }
+
+    }, [])
 
     if (currentUserId) return <Redirect to='/home' />
 

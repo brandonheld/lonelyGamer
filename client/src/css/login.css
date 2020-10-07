@@ -42,6 +42,7 @@
     margin: .50rem 1rem .75rem;
     height: 2.5rem;
     box-sizing: border-box;
+    padding: 5px;
     border-radius: 5px;
     background-color: silver;
     border: none;
