@@ -1,0 +1,109 @@
+.signupBackground {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: black;
+}
+.signupContainer{
+    position: relative;
+    top: 20%;
+}
+.signupContainer__buttonsBox {
+    display: flex;
+    flex-direction: row;
+    margin: 0 auto;
+    padding: 10px 5px;
+    justify-content: space-between;
+    width: 100%;
+    max-width: 360px;
+    min-width: 185px;
+    background-color: rgba(0, 0, 0, 0.7)
+}
+.signupContainer__button {
+    cursor: pointer;
+    padding: 8px;
+    border-radius: 5px;
+    color: silver;
+    background-color: midnightblue;
+}
+.signupContainer__form {
+    margin: 0 auto;
+    padding: 5px;
+    display: flex;
+    flex-direction: column;
+    max-width: 360px;
+    min-width: 185px;
+    background-color: rgba(0, 0, 0, 0.7)
+    
+}
+.signupContainer__formInput {
+    width: 100%;
+    padding: 5px 0;
+    color: silver;
+    text-align: center;
+    background-color: midnightblue;
+}
+.signupContainer__text {
+    text-align: center;
+    padding: 5px;
+    color: silver;
+}
+button:disabled {
+    background-color: rgba(25, 25, 112, 0.7);
+    cursor: not-allowed;
+}
+section {    
+    width: 100%;
+    overflow: hidden;
+    height: 100vh;
+    position: absolute;
+    z-index: -10;
+}
+section > span {
+    
+    position: absolute;
+    z-index: -10;
+    pointer-events: none;
+    background-color: blue;
+    animation: animate 5s linear infinite;
+}
+
+@keyframes animate {
+    0% {
+        transform: scale(0) rotate(0deg);
+        filter: hue-rotate(0deg)
+    }
+    25% {
+        
+    }
+    50% {
+        
+    }
+    75% {
+    
+    }
+    100% {
+        transform: scale(1)  rotate(360deg);
+        filter: hue-rotate(45deg)  
+    }
+}
+
+@media screen and (min-width: 600px) {
+    .signupContainer__text {
+        font-size: 2rem;
+    }
+    .signupContainer__form {
+        max-width: 600px;
+    }
+    .signupContainer__buttonsBox {
+        max-width: 600px;
+    }
+    .signupContainer__formInput {
+        font-size: 1.25rem;
+    }
+    .signupContainer__button {
+        font-size: 1.5rem;
+    }
+}
