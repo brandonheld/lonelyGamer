@@ -1,0 +1,99 @@
+.loginBackground {
+    position: fixed;
+    z-index: 10;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: black;
+}
+.loginContainer {
+    position: relative;
+    padding: 50px;
+    margin: 0 auto;
+    top:30%;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    max-width: 360px;
+    min-width: 185px;
+    background-color: black;
+    border-radius: 20px;
+    color: silver;
+    animation: animate 5s linear infinite;
+}
+.loginContainer__form {
+    display: flex;
+    flex-direction: column;
+    
+}
+.loginContainer__header {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    min-height: 45px;
+    margin: 1rem;
+}
+.loginContainer__formLable {
+    margin-left: 1rem;
+}
+.loginContainer__formInput{
+    margin: .50rem 1rem .75rem;
+    height: 2.5rem;
+    box-sizing: border-box;
+    border-radius: 5px;
+    background-color: silver;
+    border: none;
+}
+#signIn {
+    margin: 1rem;
+    height: 2.5rem;
+    background-color: silver;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+#signIn:hover {
+    background-color: lime;
+}
+#registerButton {
+    border-radius: 25px;
+    border: 2px solid lime;
+    color: silver;
+    padding: 10px 14px;
+    background: none;
+    cursor: pointer;
+}
+#registerButton:hover {
+    background-color: lime;
+    color: black;
+}
+@keyframes animate {
+    0% {
+        box-shadow: 0 0 20px 50px #0f0,
+                    inset 0 0 50px #0f0;
+        filter: hue-rotate(0deg); 
+    }
+    20% {
+        box-shadow: 0 0 20px 40px #0f0,
+                    inset 0 0 40px #0f0;
+    }
+    40% {
+        box-shadow: 0 0 20px 20px #0f0,
+                    inset 0 0 20px #0f0;
+    }
+    60% {
+        box-shadow: 0 0 20px 60px #0f0,
+                    inset 0 0 60px #0f0;
+    }
+    80% {
+        box-shadow: 0 0 20px 80px #0f0,
+                    inset 0 0 80px #0f0;
+    }
+    100% {
+        box-shadow: 0 0 20px 50px #0f0,
+                    inset 0 0 50px #0f0;
+        filter: hue-rotate(360deg); 
+    }
+}

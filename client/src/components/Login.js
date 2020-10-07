@@ -1,30 +1,34 @@
 import React, { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
+import { Redirect, useHistory } from 'react-router-dom';
 import { login } from '../store/auth';
-import { Redirect } from 'react-router-dom';
+import '../css/login.css'
 
 function Login() {
-    const currentUserId = useSelector(state => state.auth.id);
+    const dispatch = useDispatch();
+    const history = useHistory();
 
+    const currentUserId = useSelector(state => state.auth.id);
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
-    const dispatch = useDispatch();
     
     const handleSubmit = (e) => {
         e.preventDefault();
         dispatch(login(username, password))
     };
-    const demo = e => {
-        e.preventDefault();
-        dispatch(login('demo@demo.com', 'password'))
-    };
 
-    if (currentUserId) return <Redirect to='/' />
+    const signup = e => {
+        e.preventDefault();
+        history.push(`/signup`)
+    }
+    if (currentUserId) return <Redirect to='/home' />
+
     return (
-        <div className='background'>
+        <div className='loginBackground'>
             <div className='loginContainer'>
                 <div className='loginContainer__header'>
                     <h1>Login</h1>
+                    <button id='registerButton' onClick={signup} >Create Account</button>
                 </div>
                 <form className='loginContainer__form' onSubmit={handleSubmit}>
                     <label className='loginContainer__formLable'>Email address</label>
@@ -46,8 +50,7 @@ function Login() {
                             onChange={(e) => setPassword(e.target.value)} 
                         />
                     <button id='signIn' type='submit'>Sign in</button> 
-                    <button id='demoButton' onClick={demo}>Demo</button>
-                </form>  
+                </form> 
             </div>
         </div>
     );
