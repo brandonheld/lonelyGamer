@@ -17,7 +17,7 @@
     width: 100%;
     max-width: 360px;
     min-width: 185px;
-    background-color: black;
+    background-color: rgba(0, 0, 0, 0.6);
     border-radius: 10px;
     color: silver;
 }

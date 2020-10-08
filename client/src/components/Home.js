@@ -18,15 +18,16 @@ function Home() {
     if (!currentUserId) return <Redirect to='/' />
 
     return (
-        <div className='homeContainer'>
-            <div className='homeContainer__left'>
+        <div className='homeBackground'>
+            <div className='homeContainer'>
+                <div className='homeContainer__left'>
 
-            </div>
-            <div className='homeContainer__right'>
-                <button id='logout' onClick={signOut}>Sign Out</button>
+                </div>
+                <div className='homeContainer__right'>
+                    <button id='logout' onClick={signOut}>Sign Out</button>
+                </div>
             </div>
         </div>
-        
     )
 }
 
