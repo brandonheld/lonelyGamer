@@ -46,7 +46,7 @@
     background-color: red;
     border: none;
 }
-#signIn {
+.loginContainer__signIn {
     margin: 1rem;
     height: 2.5rem;
     background-color: red;
@@ -54,7 +54,10 @@
     border-radius: 5px;
     cursor: pointer;
 }
-#signIn:hover {
+#loginLable {
+    margin-left: 0;
+}
+.loginContainer__signIn:hover {
     background-color: purple;
 }
 #registerButton {
@@ -66,8 +69,8 @@
     cursor: pointer;
 }
 #registerButton:hover {
+    border: 2px solid purple;
     background-color: purple;
-    border: none;
     color: black;
 }
 #boxes {    
@@ -102,5 +105,20 @@
     100% {
         transform: scale(1)  rotate(360deg);
         filter: hue-rotate(175deg)  
+    }
+}
+
+@media screen and (min-width: 700px) {
+    .loginContainer__formLable {
+        font-size: 2rem;
+    }
+    .loginContainer {
+        max-width: 600px;
+    }
+    .loginContainer__formInput {
+        font-size: 1.25rem;
+    }
+    .loginContainer__signIn, #registerButton {
+        font-size: 1.5rem;
     }
 }

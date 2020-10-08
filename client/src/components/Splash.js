@@ -1,20 +1,13 @@
 import React from 'react'
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 import { Redirect, useHistory } from 'react-router-dom';
-import { login } from '../store/auth';
 import '../css/splash.css'
 
 function Splash() {
-    const dispatch = useDispatch();
     const history = useHistory();
     
     const currentUserId = useSelector(state => state.auth.id);
     
-    const demo = e => {
-        e.preventDefault();
-        dispatch(login('demo@demo.com', 'password'))
-    };
-
     const signin = e => {
         e.preventDefault();
         history.push(`/login`)
@@ -32,7 +25,6 @@ function Splash() {
             <div className='splashContainer'>
                 <div className='splashContainer__login'>
                     <button className='splashContainer__button' onClick={signin}>Login</button>
-                    <button className='splashContainer__button' onClick={demo} >Demo Login</button>
                 </div>
                 <div className='splashContainer__body'>
                     <h1 id='gotGame'>GOT GAME?</h1>

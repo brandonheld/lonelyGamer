@@ -21,6 +21,11 @@ function Login() {
         e.preventDefault();
         history.push(`/signup`)
     }
+
+    const demo = e => {
+        e.preventDefault();
+        dispatch(login('demo@demo.com', 'password'))
+    };
     
     const createSquare = () => {
         const section = document.querySelector('section');
@@ -56,7 +61,7 @@ function Login() {
             <section id='boxes'></section>
             <div className='loginContainer'>
                 <div className='loginContainer__header'>
-                    <h1>Login</h1>
+                    <h1 id='loginLable' className='loginContainer__formLable'>Login</h1>
                     <button id='registerButton' onClick={signup} >Create Account</button>
                 </div>
                 <form className='loginContainer__form' onSubmit={handleSubmit}>
@@ -78,7 +83,8 @@ function Login() {
                             autoComplete="off"
                             onChange={(e) => setPassword(e.target.value)} 
                         />
-                    <button id='signIn' type='submit'>Sign in</button> 
+                    <button className='loginContainer__signIn' type='submit'>Sign in</button>
+                    <button className='loginContainer__signIn' onClick={demo} >Demo Login</button> 
                 </form> 
             </div>
         </div>

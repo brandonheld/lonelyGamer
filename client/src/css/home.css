@@ -20,4 +20,8 @@
     right: 5px;
     padding: 5px;
     border-radius: 5px;
+    background-color: red;
+    color: purple;
+    font-size: 1.5rem;
+    cursor: pointer;
 }

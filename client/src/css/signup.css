@@ -90,7 +90,7 @@ section > span {
     }
 }
 
-@media screen and (min-width: 600px) {
+@media screen and (min-width: 700px) {
     .signupContainer__text {
         font-size: 2rem;
     }
