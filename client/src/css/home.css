@@ -1,0 +1,23 @@
+.homeContainer {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    flex-direction: row;
+}
+.homeContainer__left {
+    background-color: red;
+    width: 33vw;
+    height: 100hv;
+}
+.homeContainer__right {
+    background-color: blue;
+    width: 67vw;
+    height: 100hv;
+}
+#logout {
+    position: fixed;
+    top: 5px;
+    right: 5px;
+    padding: 5px;
+    border-radius: 5px;
+}

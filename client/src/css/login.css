@@ -18,7 +18,7 @@
     max-width: 360px;
     min-width: 185px;
     background-color: black;
-    border-radius: 10px;
+    border-radius: 175px;
     color: silver;
     animation: animate 5s linear infinite;
 }
