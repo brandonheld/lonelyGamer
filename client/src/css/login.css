@@ -20,7 +20,6 @@
     background-color: black;
     border-radius: 10px;
     color: silver;
-    animation: animate 5s linear infinite;
 }
 .loginContainer__form {
     display: flex;
@@ -44,58 +43,64 @@
     box-sizing: border-box;
     padding: 5px;
     border-radius: 5px;
-    background-color: silver;
+    background-color: red;
     border: none;
 }
 #signIn {
     margin: 1rem;
     height: 2.5rem;
-    background-color: silver;
+    background-color: red;
     border: none;
     border-radius: 5px;
     cursor: pointer;
 }
 #signIn:hover {
-    background-color: lime;
+    background-color: purple;
 }
 #registerButton {
     border-radius: 25px;
-    border: 2px solid lime;
+    border: 2px solid red;
     color: silver;
     padding: 10px 14px;
     background: none;
     cursor: pointer;
 }
 #registerButton:hover {
-    background-color: lime;
+    background-color: purple;
+    border: none;
     color: black;
+}
+#boxes {    
+    width: 100%;
+    overflow: hidden;
+    height: 100vh;
+    position: absolute;
+    z-index: -10;
+}
+#boxes > span {
+    
+    position: absolute;
+    z-index: -10;
+    pointer-events: none;
+    background-color: blue;
+    animation: animate 5s linear infinite;
 }
 @keyframes animate {
     0% {
-        background-color: rgba(0, 255, 0, .3);
-        box-shadow: 0 0 28px 70px rgba(0, 255, 0, .3);
-        filter: hue-rotate(0deg); 
+        transform: scale(0) rotate(0deg);
+        filter: hue-rotate(0deg)
     }
-    20% {
-        background-color: rgba(0, 255, 0, .3);
-        box-shadow:  0 0 28px 60px rgba(0, 255, 0, .3);
+    25% {
+        
     }
-    40% {
-        background-color: rgba(0, 255, 0, .3);
-        box-shadow:  0 0 28px 48px rgba(0, 255, 0, .3);
+    50% {
+        
     }
-    60% {
-        background-color: rgba(0, 255, 0, .3);
-        box-shadow:  0 0 28px 80px rgba(0, 255, 0, .3);
-    }
-    80% {
-        background-color: rgba(0, 255, 0, .3);
-        box-shadow:  0 0 28px 100px rgba(0, 255, 0, .3);
+    75% {
+    
     }
     100% {
-        background-color: rgba(0, 255, 0, .3);
-        box-shadow: 0 0 28px 70px rgba(0, 255, 0, .3);
-        filter: hue-rotate(360deg); 
+        transform: scale(1)  rotate(360deg);
+        filter: hue-rotate(175deg)  
     }
 }
-
