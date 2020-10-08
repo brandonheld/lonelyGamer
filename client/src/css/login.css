@@ -18,7 +18,7 @@
     max-width: 360px;
     min-width: 185px;
     background-color: black;
-    border-radius: 175px;
+    border-radius: 10px;
     color: silver;
     animation: animate 5s linear infinite;
 }
@@ -73,28 +73,28 @@
 @keyframes animate {
     0% {
         background-color: rgba(0, 255, 0, .3);
-        box-shadow: 0 0 28px 50px rgba(0, 255, 0, .3);
+        box-shadow: 0 0 28px 70px rgba(0, 255, 0, .3);
         filter: hue-rotate(0deg); 
     }
     20% {
         background-color: rgba(0, 255, 0, .3);
-        box-shadow:  0 0 28px 40px rgba(0, 255, 0, .3);
+        box-shadow:  0 0 28px 60px rgba(0, 255, 0, .3);
     }
     40% {
         background-color: rgba(0, 255, 0, .3);
-        box-shadow:  0 0 28px 28px rgba(0, 255, 0, .3);
+        box-shadow:  0 0 28px 48px rgba(0, 255, 0, .3);
     }
     60% {
         background-color: rgba(0, 255, 0, .3);
-        box-shadow:  0 0 28px 60px rgba(0, 255, 0, .3);
+        box-shadow:  0 0 28px 80px rgba(0, 255, 0, .3);
     }
     80% {
         background-color: rgba(0, 255, 0, .3);
-        box-shadow:  0 0 28px 80px rgba(0, 255, 0, .3);
+        box-shadow:  0 0 28px 100px rgba(0, 255, 0, .3);
     }
     100% {
         background-color: rgba(0, 255, 0, .3);
-        box-shadow: 0 0 28px 50px rgba(0, 255, 0, .3);
+        box-shadow: 0 0 28px 70px rgba(0, 255, 0, .3);
         filter: hue-rotate(360deg); 
     }
 }
