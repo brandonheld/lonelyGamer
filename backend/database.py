@@ -7,12 +7,12 @@ with app.app_context():
     db.drop_all()
     db.create_all()
 
+    demo = User(username='Demo', email='demo@demo.com', password='password')
     ian = User(username='Ian', email='ian@aa.io', password='password')
     javier = User(username='Javier', email='javier@aa.io', password='password')
     dean = User(username='Dean', email='dean@aa.io', password='password')
     angela = User(username='Angela', email='angela@aa.io', password='password')
     alissa = User(username='Alissa', email='alissa@aa.io', password='password')
-    demo = User(username='Demo', email='demo@demo.com', password='password')
 
     db.session.add(demo)
     db.session.add(ian)
