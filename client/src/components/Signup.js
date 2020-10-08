@@ -45,19 +45,22 @@ function Signup() {
         square.style.top = Math.random() * window.innerHeight + 'px';
         square.style.left = Math.random() * window.innerWidth + 'px';
         
-        // if(section) {
-            section.appendChild(square);
-        // } else {
-        //     return null
-        // }
+        
+        section.appendChild(square);
+
         setTimeout(() => {
             square.remove()
         }, 5000)
     }
     const noEnter = (e) => {
-        if(e.keyIdentifier==='U+000A'||e.keyIdentifier==='Enter'||e.keyCode===13)
-            {if(e.target.nodeName==='INPUT'&&(e.target.type==='text'||e.target.type==='email'))
-            {e.preventDefault();return false;}}
+        if (e.keyIdentifier==='U+000A'||e.keyIdentifier==='Enter'||e.keyCode===13)
+            {if (e.target.nodeName==='INPUT'&&
+                    (e.target.type==='text'||
+                     e.target.type==='email')) {
+                     e.preventDefault();
+                    return false;
+                }
+            }
         
     }
     useEffect(() => {
