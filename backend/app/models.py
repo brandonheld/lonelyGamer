@@ -11,6 +11,12 @@ class User(db.Model):
     username = db.Column(db.String(50), nullable=False, unique=True)
     email = db.Column(db.String(255), nullable=False, unique=True)
     hashed_password = db.Column(db.String(255), nullable=False)
+    description = db.Column(db.Text, nullable=False,
+                            default='Time to show off! Tell us what your all about!')  # noqa
+    avatar_id = db.Column(db.Integer, db.ForeignKey('avatars.id'),
+                          nullable=False, default=1)
+
+    avatar = db.relationship("Avatar", foreign_keys=[avatar_id])
 
     @property
     def password(self):
@@ -27,14 +33,16 @@ class User(db.Model):
         return {
             "id": self.id,
             "username": self.username,
-            "email": self.email
+            "description": self.description,
+            "email": self.email,
+            "avatar_id": self.avatar_id
         }
 
 
 class Avatar(db.Model):
     __tablename__ = 'avatars'
     id = db.Column(db.Integer, primary_key=True)
-    avatar_url = db.Column(db.String(), nullable=False)
+    avatar_url = db.Column(db.String(255), nullable=False)
 
     def to_dict(self):
         return {
@@ -48,6 +56,7 @@ class Game(db.Model):
 
     id = db.Column(db.Integer, primary_key=True)
     game_title = db.Column(db.String(255), nullable=False)
+    platform = db.Column(db.String(255), nullable=False)
     is_fps = db.Column(db.Boolean, default=False)
     is_rpg = db.Column(db.Boolean, default=False)
     is_mmo = db.Column(db.Boolean, default=False)
@@ -56,32 +65,8 @@ class Game(db.Model):
         return {
             "id": self.id,
             "game_title": self.game_title,
+            "platform": self.platform,
             "is_fps": self.is_fps,
             "is_rpg": self.is_rpg,
             "is_mmo": self.is_mmo
-        }
-
-
-class Profile(db.Model):
-    __tablename__ = 'profiles'
-
-    id = db.Column(db.Integer, primary_key=True)
-    games_played = db.Column(db.Text)
-    platform = db.Column(db.Text, nullable=False)
-    des = db.Column(db.Text, nullable=False)
-    user_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
-    avatar_id = db.Column(db.Integer, db.ForeignKey('avatars.id'),
-                          nullable=False)
-
-    user = db.relationship("User", foreign_keys=[user_id])
-    avatar = db.relationship("Avatar", foreign_keys=[avatar_id])
-
-    def to_dict(self):
-        return {
-            "id": self.id,
-            "games_played": self.games_played,
-            "platform": self.platform,
-            "des": self.des,
-            "user_id": self.user_id,
-            "avatar_id": self.avatar_id
         }
