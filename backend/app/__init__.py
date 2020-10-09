@@ -7,7 +7,7 @@ from .api.user_routes import user_routes
 from .api.session_routes import session_routes
 from .config import Config
 from flask_migrate import Migrate
-
+from flask_socketio import SocketIO, send
 app = Flask(__name__)
 
 app.config.from_object(Config)
@@ -16,9 +16,19 @@ app.register_blueprint(session_routes, url_prefix='/api/session')
 app.register_blueprint(user_routes, url_prefix='/api/users')
 db.init_app(app)
 migrate = Migrate(app, db)
-
+socketIo = SocketIO(app, cors_allowed_origins="*")
 # Application Security
 CORS(app)
+
+
+@socketIo.on("message")
+def handleMessage(msg):
+    send(msg, broadcast=True)
+    return None
+
+
+if __name__ == '__main__':
+    socketIo.run(app)
 
 
 @app.after_request

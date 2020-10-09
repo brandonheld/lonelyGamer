@@ -12,7 +12,6 @@ def signup_user():
                 email=request.json.get('email', None),
                 password=request.json.get('password', None)
     )
-    print(f'{user}')
     db.session.add(user)
     db.session.commit()
     session["user"] = user.to_dict()

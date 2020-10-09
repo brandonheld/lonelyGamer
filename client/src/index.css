@@ -4,6 +4,8 @@
     border: 0;
     font-size: 100%;
     font-family: ProximaNova;
+    box-sizing: border-box;
+
 }
 button:focus {
     outline: none;

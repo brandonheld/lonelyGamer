@@ -10,7 +10,7 @@ with app.app_context():
     demo = User(username='Demo', email='demo@demo.com', password='password',
                 avatar_id=1)
     ian = User(username='Ian', email='ian@aa.io', password='password',
-               avatar_id=1)
+               avatar_id=2)
     javier = User(username='Javier', email='javier@aa.io', password='password',
                   avatar_id=1)
     dean = User(username='Dean', email='dean@aa.io', password='password',

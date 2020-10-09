@@ -11,8 +11,10 @@
 }
 .homeContainer__left {
     background-color: red;
+    position: relative;
     width: 25vw;
-    height: 100hv;
+    min-width: 275px;
+    height: 100vh;
     display: flex;
     flex-direction: column;
 }
@@ -70,4 +72,28 @@
     cursor: pointer;
     grid-column-start: 3;
     margin: 5px 5px auto auto;
+}
+.chat {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    min-height: 100px;
+    max-height: 150px;
+    overflow-y: auto;
+    padding: 5px 5px 19px;
+    background-color: saddlebrown;
+}
+#sendMesageButton {
+    background-color: seagreen;
+    position: absolute;
+    right: 5px;
+}
+.chatInput {
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+    background-color: slateblue;
+}
+.chatMessages {
+    margin: 5px;
 }

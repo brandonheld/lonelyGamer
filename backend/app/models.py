@@ -14,7 +14,7 @@ class User(db.Model):
     description = db.Column(db.Text, nullable=False,
                             default='Time to show off! Tell us what your all about!')  # noqa
     avatar_id = db.Column(db.Integer, db.ForeignKey('avatars.id'),
-                          nullable=False, default=1)
+                          nullable=False)
 
     avatar = db.relationship("Avatar", foreign_keys=[avatar_id])
 
