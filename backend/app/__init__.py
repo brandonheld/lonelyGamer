@@ -17,7 +17,7 @@ app.register_blueprint(user_routes, url_prefix='/api/users')
 db.init_app(app)
 migrate = Migrate(app, db)
 socket_io = SocketIO(app, cors_allowed_origins="*")
-# Application Security
+
 CORS(app)
 
 
@@ -25,10 +25,6 @@ CORS(app)
 def handleMessage(msg):
     send(msg, broadcast=True)
     return None
-
-
-# if __name__ == '__main__':
-#     socket_io.run(app)
 
 
 @app.after_request
