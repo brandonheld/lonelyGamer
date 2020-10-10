@@ -5,7 +5,7 @@ import { Redirect, useHistory } from 'react-router-dom';
 import '../css/signup.css'
 
 function Signup() {
-    const currentUserId = useSelector(state => state.auth.id);
+    const currentUserId = useSelector(state => state.user.id);
     const dispatch = useDispatch();
     const history = useHistory();
     
