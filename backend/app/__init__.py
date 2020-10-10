@@ -16,9 +16,12 @@ app.register_blueprint(session_routes, url_prefix='/api/session')
 app.register_blueprint(user_routes, url_prefix='/api/users')
 db.init_app(app)
 migrate = Migrate(app, db)
-socket_io = SocketIO(app, cors_allowed_origins="*")
 
 CORS(app)
+app.config['CORS_HEADERS'] = 'Content-Type'
+socket_io = SocketIO(app, cors_allowed_origins="*")
+if __name__ == '__main__':
+    socketio.run(app, debug=True)
 
 
 @socket_io.on("message")
