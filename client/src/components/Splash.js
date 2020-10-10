@@ -6,7 +6,7 @@ import '../css/splash.css'
 function Splash() {
     const history = useHistory();
     
-    const currentUserId = useSelector(state => state.auth.id);
+    const currentUserId = useSelector(state => state.user.id);
     
     const signin = e => {
         e.preventDefault();

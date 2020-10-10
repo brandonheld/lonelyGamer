@@ -16,19 +16,19 @@ app.register_blueprint(session_routes, url_prefix='/api/session')
 app.register_blueprint(user_routes, url_prefix='/api/users')
 db.init_app(app)
 migrate = Migrate(app, db)
-socketIo = SocketIO(app, cors_allowed_origins="*")
+socket_io = SocketIO(app, cors_allowed_origins="*")
 # Application Security
 CORS(app)
 
 
-@socketIo.on("message")
+@socket_io.on("message")
 def handleMessage(msg):
     send(msg, broadcast=True)
     return None
 
 
-if __name__ == '__main__':
-    socketIo.run(app)
+# if __name__ == '__main__':
+#     socket_io.run(app)
 
 
 @app.after_request

@@ -8,7 +8,7 @@ function Login() {
     const dispatch = useDispatch();
     const history = useHistory();
 
-    const currentUserId = useSelector(state => state.auth.id);
+    const currentUserId = useSelector(state => state.user.id);
     const [email, setEmailname] = useState('');
     const [password, setPassword] = useState('');
     

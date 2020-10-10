@@ -12,24 +12,25 @@ let socket = io.connect(`${endPoint}`)
 function Home() {
     const dispatch = useDispatch();
 
-    const currentUser = useSelector(state => state.auth);
+    const currentUser = useSelector(state => state.user);
     
-    const [edit, setEdit] = useState(false)
-    const [game, setGame] = useState({
-        nowPlaying: 'Click edit to change',
-        platform: 'Click edit to change',
-    });
     const [messages, setMessages] = useState(['Start of chat']);
     const [message, setMessage] = useState('');
+    const [edit, setEdit] = useState(false)
+    const [profile, setProfile] = useState({
+        nowPlaying: `${currentUser.game_title}`,
+        platform: `${currentUser.platform}`,
+        description: `${currentUser.description}`
+    });
 
     const signOut = e => {
         e.preventDefault();
         dispatch(logout());
     }
     
-    const gameUpdate  = (e) => {
+    const profileUpdate  = (e) => {
         e.preventDefault()
-        setGame({...game, [e.target.name]: e.target.value})
+        setProfile({...profile, [e.target.name]: e.target.value})
     }
 
     useEffect(() => {
@@ -55,7 +56,9 @@ function Home() {
             alert("Please add a message");
         }
     };
-
+    const saveProfile = () => {
+        setEdit(!edit)
+    }
     if (!currentUser.id) return <Redirect to='/' />
 
     return (
@@ -63,41 +66,38 @@ function Home() {
             <div className='homeContainer'>
                 <div className='homeContainer__left'>
                     <div className='homeContainer__leftHeader'>
-                        <div id='avatar'>avatar_id</div>
                         <h2 id='username'>{currentUser.username}</h2>
                     </div>
                     <div className='homeContainer__profile'>
                         <h3>Profile</h3>
                         {!edit ? ( 
                             <div onClick={() => setEdit(!edit)}>Edit</div>
-                            ): <div onClick={() => setEdit(!edit)}>Save</div>
+                            ): <div onClick={saveProfile }>Save</div>
                         }
                     </div>
                     <div className='homeContainer__playing'>
                         { !edit ? (
-                            <div>Playing Now: {game.nowPlaying}</div>
+                            <div>Playing Now: {profile.nowPlaying}</div>
                             ):
                                 <input id='nowPlaying'
                                 type='text'
-                                name='game_title' 
-                                defaultValue={game.nowPlaying}
-                                placeholder="What game are you playing?"
+                                name='nowPlaying' 
+                                defaultValue={profile.nowPlaying}
                                 autoComplete='off' 
-                                onChange={gameUpdate}
+                                onChange={profileUpdate}
                                 />
                         }
                     </div>
                     <div className='homeContainer__platform'>
                         { !edit ? (
-                            <div>Platform: {game.platform}</div>
+                            <div>Platform: {profile.platform}</div>
                             ):
                                 <input id='platform'
                                 type='text'
                                 name='platform' 
-                                defaultValue={game.platform}
-                                placeholder="What game are you playing?"
+                                defaultValue={profile.platform}
                                 autoComplete='off' 
-                                onChange={gameUpdate}
+                                onChange={profileUpdate}
                                 />
                         }
                     </div>
@@ -108,7 +108,8 @@ function Home() {
                                 <textarea id='description'
                                     name='description'
                                     rows='15'
-                                    defaultValue='current User . description'
+                                    defaultValue={profile.description}
+                                    onChange={profileUpdate}
                                 />
                             </div>
                     }
