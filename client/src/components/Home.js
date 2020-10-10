@@ -3,10 +3,11 @@ import { useDispatch, useSelector } from 'react-redux';
 import io from 'socket.io-client'
 import { Redirect} from 'react-router-dom'
 import { logout } from '../store/auth';
+import { imageUrl } from '../config';
 
 import '../css/home.css'
 
-let endPoint = 'http://localhost:5000'
+const endPoint = imageUrl;
 let socket = io.connect(`${endPoint}`)
 
 function Home() {
