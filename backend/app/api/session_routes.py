@@ -1,6 +1,5 @@
 from flask import Blueprint, jsonify, redirect, url_for, session, request
 from app.models import User, db
-from flask_jwt_extended import create_access_token, jwt_required
 
 session_routes = Blueprint('session', __name__)
 

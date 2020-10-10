@@ -27,6 +27,11 @@ function Login() {
         dispatch(login('demo@demo.com', 'password'))
     };
     
+    const demo2 = e => {
+        e.preventDefault();
+        dispatch(login('ian@aa.io', 'password'))
+    };
+
     const createSquare = () => {
         const section = document.querySelector('section');
         const square = document.createElement('span');
@@ -84,7 +89,8 @@ function Login() {
                             onChange={(e) => setPassword(e.target.value)} 
                         />
                     <button className='loginContainer__signIn' type='submit'>Sign in</button>
-                    <button className='loginContainer__signIn' onClick={demo} >Demo Login</button> 
+                    <button className='loginContainer__signIn' onClick={demo} >Demo Login 1</button> 
+                    <button className='loginContainer__signIn' onClick={demo2} >Demo Login 2</button> 
                 </form> 
             </div>
         </div>

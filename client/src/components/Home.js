@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import io from 'socket.io-client'
 import { Redirect} from 'react-router-dom'
@@ -32,18 +32,12 @@ function Home() {
         e.preventDefault()
         setProfile({...profile, [e.target.name]: e.target.value})
     }
-
-    useEffect(() => {
-        getMessages();
+    
+    socket.on('message', msg => {
+        setMessages([...messages, msg]);
     });
 
-    const getMessages = () => {
-        socket.on('message', msg => {
-            setMessages([...messages, msg]);
-        });
-    };
-
-    const setMsg = e => {
+    const storeMessage = e => {
         e.preventDefault()
         setMessage(e.target.value);
     }
@@ -59,6 +53,7 @@ function Home() {
     const saveProfile = () => {
         setEdit(!edit)
     }
+
     if (!currentUser.id) return <Redirect to='/' />
 
     return (
@@ -125,7 +120,7 @@ function Home() {
                             type='text'
                             value={message} 
                             name='message' 
-                            onChange={setMsg} 
+                            onChange={storeMessage} 
                             placeholder='Enter message'
                         />
                         <button id='sendMesageButton' onClick={sendMessage}>Send</button>
@@ -133,6 +128,12 @@ function Home() {
                 </div>
                 <div className='homeContainer__right'>
                     <button id='logout' onClick={signOut}>Sign Out</button>
+                    <div className='homeContainer__feed'>
+                        <h2 id='username'>{currentUser.username}</h2>
+                        <div>Playing: {profile.nowPlaying}</div>
+                        <div>Playing on: {profile.platform}</div>
+                        <div>{currentUser.description}</div>
+                    </div>
                 </div>
             </div>
         </div>

@@ -98,3 +98,7 @@
 .chatMessages {
     margin: 5px;
 }
+.homeContainer__feed {
+    grid-column-start: 2;
+    margin: auto auto;
+}
