@@ -21,7 +21,7 @@ CORS(app)
 app.config['CORS_HEADERS'] = 'Content-Type'
 socket_io = SocketIO(app, cors_allowed_origins="*")
 if __name__ == '__main__':
-    socketio.run(app, debug=True)
+    socketio.run(app)
 
 
 @socket_io.on("message")
