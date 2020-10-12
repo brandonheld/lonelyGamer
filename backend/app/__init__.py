@@ -1,7 +1,7 @@
 import os
 from flask import Flask, render_template, request, session
 from flask_cors import CORS
-from flask_wtf.csrf import CSRFProtect, generate_csrf
+from flask_wtf.csrf import generate_csrf
 from .models import db, User
 from .api.user_routes import user_routes
 from .api.session_routes import session_routes
@@ -18,16 +18,17 @@ db.init_app(app)
 migrate = Migrate(app, db)
 
 CORS(app)
-app.config['CORS_HEADERS'] = 'Content-Type'
-socket_io = SocketIO(app, cors_allowed_origins="*")
-if __name__ == '__main__':
-    socketio.run(app)
+# socket_io = SocketIO(app, cors_allowed_origins="*")
 
 
-@socket_io.on("message")
-def handleMessage(msg):
-    send(msg, broadcast=True)
-    return None
+# @socket_io.on("message")
+# def handleMessage(msg):
+#     send(msg, broadcast=True)
+#     return None
+
+
+# if __name__ == '__main__':
+#     socketio.run(app)
 
 
 @app.after_request
