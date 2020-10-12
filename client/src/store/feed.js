@@ -26,7 +26,7 @@ export const getFeedUsers = () => {
     }
 }
 
-export default function feedReducer(state = {}, action) {
+export default function feedReducer(state = [], action) {
     switch (action.type) {
         case FEED_USERS:
             return action.feedUsers;

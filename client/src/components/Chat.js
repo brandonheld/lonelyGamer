@@ -10,7 +10,7 @@ if (process.env.NODE_ENV !== 'production') {
 } else {
     endPoint =baseUrl
 }
-let socket = io.connect(`${endPoint}`)
+let socket = io(`${endPoint}`,{reconnectionAttempts: 5, reconnectionDelay: 10000})
 
 function Chat() {
     const currentUser = useSelector(state => state.user);

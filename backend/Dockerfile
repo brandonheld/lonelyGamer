@@ -18,4 +18,4 @@ ENV SQLALCHEMY_ECHO=True
 EXPOSE 8000
 
 # Run flask environment
-CMD gunicorn app:app
+CMD gunicorn --worker-class eventlet -w 1 app:app

@@ -1,9 +1,16 @@
 import React from 'react';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { getFeedUsers } from '../store/feed'
 import '../css/home.css'
 
 function Feed() {
+    const dispatch = useDispatch();
+
     const currentUser = useSelector(state => state.user);
+    const onlineUsers = useSelector(state => state.onlineUsers);
+    if(!onlineUsers.length) dispatch(getFeedUsers())
+    console.log(onlineUsers)
+    debugger
 
     return (
         <div className='homeContainer__feed'>
