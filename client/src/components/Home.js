@@ -1,18 +1,23 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import io from 'socket.io-client'
 import { Redirect} from 'react-router-dom'
-import { logout } from '../store/auth';
-import { imageUrl } from '../config';
+import { logout, update } from '../store/auth';
+import { getFeedUsers } from '../store/feed'
+import { baseUrl, devUrl } from '../config';
 
 import '../css/home.css'
-
-const endPoint = imageUrl;
+let endPoint;
+if (process.env.NODE_ENV !== 'production') {
+    endPoint = devUrl 
+} else {
+    endPoint =baseUrl
+}
 let socket = io.connect(`${endPoint}`)
 
 function Home() {
     const dispatch = useDispatch();
-
+    
     const currentUser = useSelector(state => state.user);
     
     const [messages, setMessages] = useState(['Start of chat']);
@@ -34,9 +39,12 @@ function Home() {
         setProfile({...profile, [e.target.name]: e.target.value})
     }
     
-    socket.on('message', msg => {
-        setMessages([...messages, msg]);
-    });
+    useEffect(() => {
+
+        socket.on('message', msg => {
+            setMessages([...messages, msg]);
+        });
+    })
 
     const storeMessage = e => {
         e.preventDefault()
@@ -53,10 +61,11 @@ function Home() {
     };
     const saveProfile = () => {
         setEdit(!edit)
+        dispatch(update(currentUser.id, profile.nowPlaying, profile.platform, profile.description))
     }
 
     if (!currentUser.id) return <Redirect to='/' />
-
+    dispatch(getFeedUsers())
     return (
         <div className='homeBackground'>
             <div className='homeContainer'>
@@ -73,7 +82,7 @@ function Home() {
                     </div>
                     <div className='homeContainer__playing'>
                         { !edit ? (
-                            <div>Playing Now: {profile.nowPlaying}</div>
+                            <div>Playing Now: {currentUser.game_title}</div>
                             ):
                                 <input id='nowPlaying'
                                 type='text'
@@ -86,7 +95,7 @@ function Home() {
                     </div>
                     <div className='homeContainer__platform'>
                         { !edit ? (
-                            <div>Platform: {profile.platform}</div>
+                            <div>Platform: {currentUser.platform}</div>
                             ):
                                 <input id='platform'
                                 type='text'
@@ -111,8 +120,8 @@ function Home() {
                     }
                     <div className='chat'>
                         {messages.length > 0 &&
-                            messages.map(msg => (
-                                <div>{msg}</div>
+                            messages.map((msg, index) => (
+                                <div key={index}>{msg}</div>
                             ))
                         }
                     </div>

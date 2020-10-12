@@ -1,9 +1,10 @@
 import { createStore, compose, combineReducers, applyMiddleware } from 'redux';
 import thunk from 'redux-thunk';
 import auth from './auth';
+import feed from './feed'
 
 const rootReducer = combineReducers({
-    user:auth
+    user:auth, onlineUsers:feed
 });
 
 let storeEnhancer;

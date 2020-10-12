@@ -57,7 +57,7 @@ function Login() {
             clearInterval(interval);
         }
 
-    }, [])
+    })
 
     if (currentUserId) return <Redirect to='/home' />
 

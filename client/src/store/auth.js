@@ -37,8 +37,24 @@ export const login = (email, password) => {
     }
 }
 
+export const update = (userId, nowPlaying, platform, description) => {
+    return async dispatch => {
+        const res = await fetch('/api/users/update', {
+            method: 'post',
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({ userId, nowPlaying, platform, description })
+        })
+        res.data = await res.json();
+        if (res.ok) { 
+            dispatch(setUser(res.data.user))
+        }
+        return res;
+    }
+}
+
 export const signup = (username, email, password) => {
-    console.log(username, password, email)
     return async dispatch => {
         const res = await fetch('/api/users/signup', {
             method: 'post',
