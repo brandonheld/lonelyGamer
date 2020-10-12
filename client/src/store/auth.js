@@ -40,7 +40,7 @@ export const login = (email, password) => {
 export const update = (userId, nowPlaying, platform, description) => {
     return async dispatch => {
         const res = await fetch('/api/users/update', {
-            method: 'post',
+            method: 'put',
             headers: {
                 "Content-Type": "application/json",
             },

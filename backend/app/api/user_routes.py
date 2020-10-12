@@ -18,7 +18,7 @@ def signup_user():
     return {"user": user.to_dict()}, 200
 
 
-@user_routes.route('/update', methods=['POST'])
+@user_routes.route('/update', methods=['PUT'])
 def update_user():
     user_id = request.json.get('userId', None)
 

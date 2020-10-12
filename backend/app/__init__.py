@@ -18,17 +18,17 @@ db.init_app(app)
 migrate = Migrate(app, db)
 
 CORS(app)
-# socket_io = SocketIO(app, cors_allowed_origins="*")
+socket_io = SocketIO(app, cors_allowed_origins="*")
 
 
-# @socket_io.on("message")
-# def handleMessage(msg):
-#     send(msg, broadcast=True)
-#     return None
+@socket_io.on("message")
+def handleMessage(msg):
+    send(msg, broadcast=True)
+    return None
 
 
-# if __name__ == '__main__':
-#     socketio.run(app)
+if __name__ == '__main__':
+    socketio.run(app)
 
 
 @app.after_request
