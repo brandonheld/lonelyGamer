@@ -4,7 +4,7 @@ export const loadFeedUsers = (feedUsers) => {
     if(!feedUsers) {
         return {
             type: FEED_USERS,
-            feedUsers: {}
+            feedUsers: []
         };  
     }
     return {
