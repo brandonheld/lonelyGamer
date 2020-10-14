@@ -41,11 +41,12 @@ function Chat() {
         <>
         <h2 id='chatLable'>CHAT</h2>
         <div className='chat'>
-        {messages.length > 0 &&
-            messages.map((msg, index) => (
-                <div id='chatMessage'key={index}>{msg}</div>
-            ))
-        }
+            {messages.length > 0 &&
+                messages.map((msg, index) => (
+                    <div id='chatMessage'key={index}>{msg}</div>
+                ))
+            }
+        </div>
         <div className='chatInput'>
             <input
                 type='text'
@@ -56,7 +57,6 @@ function Chat() {
                 placeholder='Enter message'
             />
             <button id='sendMesageButton' onClick={sendMessage}>Send</button>
-        </div>
         </div>
         </>
     )

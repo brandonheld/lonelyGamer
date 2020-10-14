@@ -29,8 +29,8 @@ function Profile() {
         <div className='homeContainer__profile'>
             <h3>Profile</h3>
             {!edit ? ( 
-                <div onClick={() => setEdit(!edit)}>Edit</div>
-                ): <div onClick={saveProfile }>Save</div>
+                <div className='homeContainer__edit' onClick={() => setEdit(!edit)}>Edit</div>
+                ): <div className='homeContainer__edit' onClick={saveProfile }>Save</div>
             }
         </div>
         <div className='homeContainer__playing'>
