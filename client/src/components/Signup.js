@@ -18,12 +18,22 @@ function Signup() {
 
     const formUpdate  = (e) => {
         e.preventDefault()
-        setForm({...form, [e.target.name]: e.target.value})
+        setForm({...form, [e.target.name]: e.target.value}) 
     }
-    
+
     const handleSubmit = e => {
         e.preventDefault();
-        dispatch(signup(form.username, form.email, form.password));
+        if (form.email && form.password && form.username) {
+            dispatch(signup(form.username, form.email, form.password));
+        } else if (!form.email && form.password && form.username) {
+            alert('Check email')
+        } else if (form.email && !form.password && form.username) {
+            alert('Check password')
+        } else if (form.email && form.password && !form.username) {
+            alert('Check username')
+        } else {
+            alert('Check username, email, and password')
+        }
     }
     
     const login = e => {
@@ -91,8 +101,8 @@ function Signup() {
                                     type='text' 
                                     name='username' 
                                     value={form.username} 
-                                    placeholder="Enter your username"
-                                    autoComplete='off' 
+                                    placeholder="Enter your username" 
+                                    required={true}
                                     onChange={formUpdate} 
                                 />
                             </div>
