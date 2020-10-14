@@ -13,14 +13,14 @@ function Feed() {
     return (
         <div className='homeContainer__feed'>
             <div className='homeContainer__feedButtons'>
-                <button>Maybe Later</button>
-                <button>Let's Play</button>
+                <button id='maybeLater'>Maybe Later</button>
+                <button id='letsPlay'>Let's Play</button>
             </div>
             <h2 id='feedUsername'>{currentUser.username}</h2>
             <h2>Playing Now</h2>
             <div id='nowPlaying'>{currentUser.game_title}</div>
             <h2>Playing on</h2>
-            <div>{currentUser.platform}</div>
+            <div id='platform'>{currentUser.platform}</div>
             <p id='feedDes'>{currentUser.description}</p>
         </div> 
     )
