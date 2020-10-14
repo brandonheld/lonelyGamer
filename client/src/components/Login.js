@@ -9,7 +9,7 @@ function Login() {
     const history = useHistory();
 
     const currentUserId = useSelector(state => state.user.id);
-    const [email, setEmailname] = useState('');
+    const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     
     const handleSubmit = (e) => {
@@ -77,7 +77,7 @@ function Login() {
                             value={email}
                             required={true}
                             autoComplete="off" 
-                            onChange={(e) => setEmailname(e.target.value)} 
+                            onChange={(e) => setEmail(e.target.value)} 
                         />
                     <label className='loginContainer__formLable'>Password</label>
                         <input className='loginContainer__formInput'
