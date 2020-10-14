@@ -40,7 +40,7 @@ function Profile() {
                     <div>{currentUser.game_title}</div>
                 </div>
                 ):
-                    <input id='nowPlaying'
+                    <input className='homeContainer__profileInputfeild'
                     type='text'
                     name='nowPlaying' 
                     defaultValue={profile.nowPlaying}
@@ -56,7 +56,7 @@ function Profile() {
                     <div>{currentUser.platform}</div>
                 </div>
                 ):
-                    <input id='platform'
+                    <input className='homeContainer__profileInputfeild'
                     type='text'
                     name='platform' 
                     defaultValue={profile.platform}
@@ -72,7 +72,7 @@ function Profile() {
         </div>
             ):
                 <div className='homeContainer__description'>
-                    <textarea id='description'
+                    <textarea className='homeContainer__profileInputfeild'
                         name='description'
                         rows='15'
                         defaultValue={profile.description}

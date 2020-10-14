@@ -157,3 +157,24 @@
 .homeContainer__feed > h2 {
     font-size: 1.5rem;
 }
+.homeContainer__profileInputfeild {
+    
+    margin:15px 5px 0;
+    width: 97%;
+    background-color: silver;
+    padding: 5px;
+}
+
+::-webkit-scrollbar {
+    width: 12px;
+}
+ 
+::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgb(173, 173, 173); 
+    border-radius: 10px;
+}
+ 
+::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    -webkit-box-shadow: inset 0 0 6px rgb(117, 117, 117);; 
+}
