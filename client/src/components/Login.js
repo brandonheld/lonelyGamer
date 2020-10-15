@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { Redirect, useHistory } from 'react-router-dom';
 import { login } from '../store/auth';
+// import { getFeedUsers } from '../store/feed'
 import '../css/login.css'
 
 function Login() {
@@ -9,12 +10,16 @@ function Login() {
     const history = useHistory();
 
     const currentUserId = useSelector(state => state.user.id);
+
+    // const onlineUsers = useSelector(state => state.onlineUsers);
+    // if(!onlineUsers.length) dispatch(getFeedUsers());
+
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     
     const handleSubmit = (e) => {
         e.preventDefault();
-        dispatch(login(email, password))
+        dispatch(login(email, password));
     };
 
     const signup = e => {
@@ -24,7 +29,7 @@ function Login() {
 
     const demo = e => {
         e.preventDefault();
-        dispatch(login('demo@demo.com', 'password'))
+        dispatch(login('demo@demo.com', 'password'));
     };
     
     const demo2 = e => {

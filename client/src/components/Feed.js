@@ -1,28 +1,49 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { getFeedUsers } from '../store/feed'
 import '../css/home.css'
 
 function Feed() {
     const dispatch = useDispatch();
-
+    const [updateState, setUpdateState] = useState(false)
     const currentUser = useSelector(state => state.user);
     const onlineUsers = useSelector(state => state.onlineUsers);
-    if(!onlineUsers.length) dispatch(getFeedUsers())
-    
+    if (!onlineUsers.length) {
+        dispatch(getFeedUsers())
+        return null
+    }
+    let onlineUser = onlineUsers.filter(user => user.id !== currentUser.id)
+    let feedUser = onlineUser[0]
+    const matches = [];
+    const letsPlay = () => {
+        let match = onlineUsers.shift()
+        matches.push([...matches, match])
+        setUpdateState(!updateState)
+    }
+    const maybeLater = () => {
+        onlineUsers.shift()
+        setUpdateState(!updateState)
+    }
+       
     return (
         <div className='homeContainer__feed'>
-            <div className='homeContainer__feedButtons'>
-                <button id='maybeLater'>Maybe Later</button>
-                <button id='letsPlay'>Let's Play</button>
-            </div>
-            <h2 id='feedUsername'>{currentUser.username}</h2>
-            <h2>Playing Now</h2>
-            <div id='nowPlaying'>{currentUser.game_title}</div>
-            <h2>Playing on</h2>
-            <div id='platform'>{currentUser.platform}</div>
-            <p id='feedDes'>{currentUser.description}</p>
+            { onlineUser.length > 0 ? (
+                <>
+                <div className='homeContainer__feedButtons'>
+                    <button id='maybeLater' onClick={maybeLater}>Maybe Later</button>
+                    <button id='letsPlay' onClick={letsPlay}>Let's Play</button>
+                </div>
+                <h2 id='feedUsername'>{feedUser.username}</h2>
+                <h2>Playing Now</h2>
+                <div id='nowPlaying'>{feedUser.game_title}</div>
+                <h2>Playing on</h2>
+                <div id='platform'>{feedUser.platform}</div>
+                <p id='feedDes'>{feedUser.description}</p>
+                </>
+            ) : <div><h1 id='emptyFeed'>Oh no there aren't any more users to match with! Dont forget to check your chat for matches! </h1></div>
+            }
         </div> 
     )
+    
 }
 export default Feed;

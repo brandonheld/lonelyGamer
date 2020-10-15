@@ -35,5 +35,4 @@ def update_user():
 @user_routes.route('/feed')
 def user_feed():
     onlineUser = User.query.all()
-    print(onlineUser)
     return {"feedUsers": [user.to_dict() for user in onlineUser]}

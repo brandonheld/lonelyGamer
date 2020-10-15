@@ -5,13 +5,17 @@ import { logout } from '../store/auth';
 import Chat from './Chat'
 import Profile from './Profile'
 import Feed from './Feed'
+// import { getFeedUsers } from '../store/feed'
 import '../css/home.css'
 
 function Home() {
     const dispatch = useDispatch();
     
     const currentUser = useSelector(state => state.user);
-        
+
+        // const onlineUsers = useSelector(state => state.onlineUsers);
+    // if(!onlineUsers.length) dispatch(getFeedUsers());
+
     const signOut = e => {
         e.preventDefault();
         dispatch(logout());

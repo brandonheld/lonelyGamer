@@ -165,7 +165,9 @@
 .homeContainer__edit {
     cursor: pointer;
 }
-
+#emptyFeed {
+    font-size: 2rem;
+}
 ::-webkit-scrollbar {
     width: 12px;
 }
