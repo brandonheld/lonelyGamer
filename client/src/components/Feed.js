@@ -11,7 +11,6 @@ function Feed() {
     const getFeed = () => {
         if (!onlineUsers.length) {
             dispatch(getFeedUsers())
-            // return null
         }
     }
 
