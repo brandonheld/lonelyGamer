@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { getFeedUsers } from '../store/feed'
 import '../css/home.css'
@@ -8,13 +8,17 @@ function Feed() {
     const [updateState, setUpdateState] = useState(false)
     const currentUser = useSelector(state => state.user);
     const onlineUsers = useSelector(state => state.onlineUsers);
-    if (!onlineUsers.length) {
-        dispatch(getFeedUsers())
-        return null
+    const getFeed = () => {
+        if (!onlineUsers.length) {
+            dispatch(getFeedUsers())
+            // return null
+        }
     }
+
     let onlineUser = onlineUsers.filter(user => user.id !== currentUser.id)
     let feedUser = onlineUser[0]
     const matches = [];
+    
     const letsPlay = () => {
         let match = onlineUsers.shift()
         matches.push([...matches, match])
@@ -24,7 +28,10 @@ function Feed() {
         onlineUsers.shift()
         setUpdateState(!updateState)
     }
-       
+    
+    useEffect(() => {
+        getFeed()
+    })
     return (
         <div className='homeContainer__feed'>
             { onlineUser.length > 0 ? (
