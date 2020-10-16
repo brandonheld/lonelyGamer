@@ -5,12 +5,15 @@ import '../css/home.css'
 
 function Feed() {
     const dispatch = useDispatch();
-    const [updateState, setUpdateState] = useState(false)
+    const [updateState, setUpdateState] = useState(true)
+    const [getFeed, setGetFeed] = useState(true)
     const currentUser = useSelector(state => state.user);
     const onlineUsers = useSelector(state => state.onlineUsers);
-    const getFeed = () => {
-        if (!onlineUsers.length) {
+    console.log(onlineUsers)
+    const updateFeed = () => {
+        if (getFeed) {
             dispatch(getFeedUsers())
+            setGetFeed(false)
         }
     }
 
@@ -29,7 +32,7 @@ function Feed() {
     }
     
     useEffect(() => {
-        getFeed()
+        updateFeed()
     })
     return (
         <div className='homeContainer__feed'>
