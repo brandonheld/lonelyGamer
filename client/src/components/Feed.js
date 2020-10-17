@@ -18,11 +18,9 @@ function Feed() {
 
     let onlineUser = onlineUsers.filter(user => user.id !== currentUser.id)
     let feedUser = onlineUser[0]
-    const matches = [];
-    
+
     const letsPlay = () => {
-        let match = onlineUsers.shift()
-        matches.push([...matches, match])
+        onlineUsers.shift()
         setUpdateState(!updateState)
     }
     const maybeLater = () => {

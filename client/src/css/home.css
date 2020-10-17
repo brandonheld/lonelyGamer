@@ -25,12 +25,17 @@
 }
 #x {
     display: none;
+    cursor: pointer;
     position: fixed;
     z-index: 3;
     top: 5px;
     right: 5px;
     padding: 5px;
     border: 1px solid silver;
+}
+#x:hover {
+    color: red;
+    border-color: red;
 }
 .homeContainer__profile {
     display: flex;
@@ -190,6 +195,10 @@
 }
 .homeContainer__edit {
     cursor: pointer;
+}
+.homeContainer__edit:hover {
+    color: red;
+    border-color: red;
 }
 #emptyFeed {
     font-size: 2rem;
