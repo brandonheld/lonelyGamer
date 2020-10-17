@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { Redirect, useHistory } from 'react-router-dom';
 import { login } from '../store/auth';
-// import { getFeedUsers } from '../store/feed'
 import '../css/login.css'
 
 function Login() {
@@ -10,9 +9,6 @@ function Login() {
     const history = useHistory();
 
     const currentUserId = useSelector(state => state.user.id);
-
-    // const onlineUsers = useSelector(state => state.onlineUsers);
-    // if(!onlineUsers.length) dispatch(getFeedUsers());
 
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');

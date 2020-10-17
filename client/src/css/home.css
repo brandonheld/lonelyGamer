@@ -23,6 +23,15 @@
     justify-content: space-around;
     height: 85px;
 }
+#x {
+    display: none;
+    position: fixed;
+    z-index: 3;
+    top: 5px;
+    right: 5px;
+    padding: 5px;
+    border: 1px solid silver;
+}
 .homeContainer__profile {
     display: flex;
     flex-direction: row;
@@ -177,6 +186,7 @@
     width: 97%;
     background-color: silver;
     padding: 5px;
+    text-align: center;
 }
 .homeContainer__edit {
     cursor: pointer;
@@ -201,6 +211,11 @@
 @media screen and (max-width: 700px) {
     .homeContainer__left {
         display: none;
+        height: 100vh;
+        width: 100vw;
+    }
+    #x {
+        display: block;
     }
     .homeContainer__right {
         width: 100vw;
