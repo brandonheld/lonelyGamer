@@ -1,5 +1,5 @@
 .homeBackground {
-    background-color: black
+    background-color: black;
 }
 .homeContainer {
     width: 100%;
@@ -12,10 +12,10 @@
     position: relative;
     width: 25vw;
     min-width: 275px;
-    height: 100vh;
     display: flex;
     flex-direction: column;
     color: silver;
+    overflow: hidden;
 }
 .homeContainer__leftHeader {
     display: flex;
@@ -31,7 +31,7 @@
     font-size: 1.25rem;
     border-bottom: 2px solid red;
 }
-.homeContainer__lables {
+.homeContainer__labels {
     margin: 25px 15px;
     border-radius: 5px;
     text-align: center;
@@ -45,10 +45,11 @@
 
 .homeContainer__right {
     width: 75vw;
+    height: 100vh;
     display: grid;
     grid-template-columns: 1fr 2fr 1fr;
     grid-template-rows: 5% 95%;
-
+    overflow: hidden;
 }
 #avatar {
     width: 75px;
@@ -73,6 +74,17 @@
     cursor: pointer;
     grid-column-start: 3;
     margin: 5px 5px auto auto;
+    min-width: 115px;
+}
+#modalButton {
+    padding: 5px;
+    border: none;
+    border-radius: 5px;
+    background-color: black;
+    color: red;
+    font-size: 1.5rem;
+    cursor: pointer;
+    display: none;
 }
 #userDes {
     overflow: hidden;
@@ -155,9 +167,13 @@
 .homeContainer__feed > h2 {
     font-size: 1.5rem;
 }
+.homeContainer__inputLabel {
+    text-align: center;
+    margin-top: 15px;
+}
 .homeContainer__profileInputfeild {
     cursor: text;
-    margin:15px 5px 0;
+    margin:5px 5px 0;
     width: 97%;
     background-color: silver;
     padding: 5px;
@@ -180,4 +196,16 @@
 ::-webkit-scrollbar-thumb {
     border-radius: 10px;
     box-shadow: inset 0 0 6px rgb(117, 117, 117);; 
+}
+
+@media screen and (max-width: 700px) {
+    .homeContainer__left {
+        display: none;
+    }
+    .homeContainer__right {
+        width: 100vw;
+    }
+    #modalButton {
+        display: block;
+    }
 }
