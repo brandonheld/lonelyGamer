@@ -19,7 +19,6 @@ Have you ever had a time when you wanted to play your favorite online game but n
 
 ## Implementation
 
-
 Using the technologies listed above user are able to create an account with the multi page sign up form. Once users are seccessfully login in user are able to update their profile by clicking on the update button. Once updated users can use the save button to switch back to displaying the user information. 
 <br>
 
