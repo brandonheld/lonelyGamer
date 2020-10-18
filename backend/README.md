@@ -7,5 +7,3 @@
   * `pipenv run python database.py`
 6. To run the backend:
    * `pipenv run flask run`
-### Navigation
-* [Back to root README](../README.md)
