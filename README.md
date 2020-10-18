@@ -24,7 +24,7 @@ Using the technologies listed above user are able to create an account with the 
 <br>
 
 Users are able to scroll through thier feed by using the let's play and maybe later button. For demo purposes the feed display all users so there are enough user to try both buttons in a non demo setting the feed would only display currently online users. 
-The chat field is conected gloablly to emulate chat after two users have matched. 
+The chat field is conected globally to emulate chat after two users have matched. 
 <br>
 
 ## Future Features
