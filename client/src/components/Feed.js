@@ -9,6 +9,7 @@ function Feed() {
     const [getFeed, setGetFeed] = useState(true)
     const currentUser = useSelector(state => state.user);
     const onlineUsers = useSelector(state => state.onlineUsers);
+    
     const updateFeed = () => {
         if (getFeed) {
             dispatch(getFeedUsers())

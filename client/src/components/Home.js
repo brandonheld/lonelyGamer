@@ -1,7 +1,7 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Redirect} from 'react-router-dom'
-import { logout } from '../store/auth';
+import { logout, offline } from '../store/auth';
 import Chat from './Chat'
 import Profile from './Profile'
 import Feed from './Feed'
@@ -13,6 +13,7 @@ function Home() {
     const currentUser = useSelector(state => state.user);
     const signOut = e => {
         e.preventDefault();
+        dispatch(offline(currentUser.id));
         dispatch(logout());
     }
     

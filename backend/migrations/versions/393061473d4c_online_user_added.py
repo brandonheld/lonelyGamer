@@ -1,8 +1,8 @@
-"""reset
+"""online user added
 
-Revision ID: a2964fa42430
+Revision ID: 393061473d4c
 Revises: 
-Create Date: 2020-10-09 15:41:15.792025
+Create Date: 2020-10-21 11:49:48.305829
 
 """
 from alembic import op
@@ -10,7 +10,7 @@ import sqlalchemy as sa
 
 
 # revision identifiers, used by Alembic.
-revision = 'a2964fa42430'
+revision = '393061473d4c'
 down_revision = None
 branch_labels = None
 depends_on = None
@@ -23,9 +23,10 @@ def upgrade():
     sa.Column('username', sa.String(length=50), nullable=False),
     sa.Column('email', sa.String(length=255), nullable=False),
     sa.Column('hashed_password', sa.String(length=255), nullable=False),
-    sa.Column('description', sa.Text(), nullable=False),
-    sa.Column('game_title', sa.String(length=255), nullable=False),
-    sa.Column('platform', sa.String(length=255), nullable=False),
+    sa.Column('description', sa.Text(), nullable=True),
+    sa.Column('game_title', sa.String(length=255), nullable=True),
+    sa.Column('platform', sa.String(length=255), nullable=True),
+    sa.Column('is_online', sa.Boolean(), nullable=True),
     sa.PrimaryKeyConstraint('id'),
     sa.UniqueConstraint('email'),
     sa.UniqueConstraint('username')

@@ -32,6 +32,17 @@ def update_user():
     return {"user": user.to_dict()}, 200
 
 
+@user_routes.route('/offline', methods=['PUT'])
+def offline_user():
+    user_id = request.json.get('id', None)
+
+    user = User.query.filter(User.id == user_id).first()
+    user.is_online = False
+
+    db.session.commit()
+    return {'msg': 'successfully offline'}, 200
+
+
 @user_routes.route('/feed')
 def user_feed():
     onlineUser = User.query.all()

@@ -54,6 +54,20 @@ export const update = (userId, nowPlaying, platform, description) => {
     }
 }
 
+export const offline = ( id ) => {
+    return async () => {
+        const res = await fetch('/api/users/offline', {
+            method: 'put',
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({ id })
+        })
+        res.data = await res.json();
+        return res;
+    }
+}
+
 export const signup = (username, email, password) => {
     return async dispatch => {
         const res = await fetch('/api/users/signup', {

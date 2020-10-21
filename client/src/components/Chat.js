@@ -14,7 +14,7 @@ let socket = io(`${endPoint}`,{reconnectionAttempts: 5, reconnectionDelay: 10000
 
 function Chat() {
     const currentUser = useSelector(state => state.user);
-    const [messages, setMessages] = useState(['Start of chat']);
+    const [messages, setMessages] = useState(['Emulates a match and starts chat for demo reasons']);
     const [message, setMessage] = useState('');
     
     useEffect(() => {

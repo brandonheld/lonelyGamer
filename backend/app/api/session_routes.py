@@ -1,4 +1,4 @@
-from flask import Blueprint, jsonify, redirect, url_for, session, request
+from flask import Blueprint, jsonify, redirect, session, request
 from app.models import User, db
 
 session_routes = Blueprint('session', __name__)
@@ -11,6 +11,7 @@ def login_user():
         password = request.json.get('password', None)
 
         user = User.query.filter(User.email == email).first()
+
         user_data = user.to_dict()
         if(user and user.check_password(password)):
             session['user'] = user.to_dict()
@@ -29,3 +30,4 @@ def load_user():
         return {"user": session['user']}, 200
     else:
         return {"msg": "user not loaded"}
+

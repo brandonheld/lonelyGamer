@@ -14,6 +14,7 @@ class User(db.Model):
     description = db.Column(db.Text, default='Time to show off! Tell us what your all about!')  # noqa
     game_title = db.Column(db.String(255), default='Need to Update')
     platform = db.Column(db.String(255), default='Need to Update')
+    is_online = db.Column(db.Boolean, default=True)
 
     @property
     def password(self):
@@ -32,5 +33,6 @@ class User(db.Model):
             "username": self.username,
             "description": self.description,
             "game_title": self.game_title,
-            "platform": self.platform
+            "platform": self.platform,
+            "is_online": self.is_online
         }
