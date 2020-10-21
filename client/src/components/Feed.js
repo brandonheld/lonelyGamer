@@ -21,7 +21,7 @@ function Feed() {
     let feedUser = onlineUser[0]
 
     const letsPlay = () => {
-        onlineUsers.shift()
+        onlineUsers.splice(0, 1)
         setUpdateState(!updateState)
     }
     const maybeLater = () => {
