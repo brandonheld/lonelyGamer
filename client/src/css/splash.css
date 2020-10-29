@@ -86,3 +86,28 @@
         font-size: 1rem;
     }
 }
+.splashContainer__footer {
+    width: 100%;
+    position: fixed;
+    bottom: 0;
+    text-align: center;
+    color: snow;
+    font-size: 1.25rem;
+}
+.splashContainer__footer > p {
+    border-bottom: 1px solid red;
+    padding-bottom: 15px;
+    margin-bottom: 10px;
+}
+.splashContainer__FooterLinks {
+    margin-bottom: 20px;
+}
+.fab, .fas {
+    cursor: pointer;
+    margin: 10px 25px;
+    color: silver;
+}
+
+.fab:hover, .fas:hover {
+    color: red;
+}

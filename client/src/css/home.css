@@ -65,14 +65,6 @@
     grid-template-rows: 5% 95%;
     overflow: hidden;
 }
-#avatar {
-    width: 75px;
-    height: 75px;
-    border-radius: 50%;
-    text-align: center;
-    margin: auto 0;
-    background-color: royalblue;
-}
 #username {
     align-self: center;
     font-size: 2rem;
@@ -232,4 +224,9 @@
     #modalButton {
         display: block;
     }
+}
+.links {
+    grid-column-start: 2;
+    grid-row-start: 1;
+    text-align: center;
 }

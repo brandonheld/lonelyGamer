@@ -58,6 +58,20 @@ function Home() {
                 <div className='homeContainer__right' id='test'>
                     <button id='modalButton' onClick={showUser}>{currentUser.username}</button>
                     <button id='logout' onClick={signOut}>Sign Out</button>
+                    <div className='links'> 
+                        <a href="https://www.linkedin.com/in/brandon-held12/">
+                            <i className="fab fa-linkedin fa-3x"></i>
+                        </a>
+                        <a href="https://github.com/brandonheld/lonelyGamer">
+                            <i className="fab fa-github fa-3x"></i>
+                        </a>
+                        <a href="https://angel.co/u/brandon-held">
+                            <i className="fab fa-angellist fa-3x"></i>
+                        </a>
+                        <a href="https://brandonheld.netlify.app/">
+                            <i className="fas fa-desktop fa-3x"></i>
+                        </a>
+                    </div>
                     <Feed />
                 </div>
             </div>

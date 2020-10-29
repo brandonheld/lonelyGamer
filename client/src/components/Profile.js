@@ -27,7 +27,6 @@ function Profile() {
     return (
         <>
         <div className='homeContainer__profile'>
-            <h3>Profile</h3>
             {!edit ? ( 
                 <div className='homeContainer__edit' onClick={() => setEdit(!edit)}>Update</div>
                 ): <div className='homeContainer__edit' onClick={saveProfile }>Save</div>
