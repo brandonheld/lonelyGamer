@@ -161,7 +161,7 @@ function Signup() {
                         ): null}
                         {count === 1 ? (
                         <div>
-                            <button className='signupContainer__button' id='signupPageButton' onClick={login}>Have an account?</button>
+                            <button className='signupContainer__button' id='signupPageButton' onClick={login}>Have an account? / Demo</button>
                         </div>
                         ): null}
                         <div>
