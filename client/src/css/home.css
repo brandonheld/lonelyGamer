@@ -62,7 +62,7 @@
     height: 100vh;
     display: grid;
     grid-template-columns: 1fr 2fr 1fr;
-    grid-template-rows: 5% 95%;
+    grid-template-rows: 65px auto;
     overflow: hidden;
 }
 #username {
@@ -156,7 +156,7 @@
 #feedDes {
     margin: 15px auto;
     max-width: 275px;
-    max-height: 500px;
+    max-height: 400px;
     letter-spacing: 1.25px;
     padding: 5px;
     overflow: hidden;
@@ -208,6 +208,12 @@
     border-radius: 10px;
     box-shadow: inset 0 0 6px rgb(117, 117, 117);; 
 }
+.links {
+    min-width: 385px;
+    grid-column-start: 2;
+    grid-row-start: 1;
+    text-align: center;
+}
 
 @media screen and (max-width: 700px) {
     .homeContainer__left {
@@ -224,9 +230,4 @@
     #modalButton {
         display: block;
     }
-}
-.links {
-    grid-column-start: 2;
-    grid-row-start: 1;
-    text-align: center;
 }
