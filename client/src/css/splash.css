@@ -57,6 +57,7 @@
     background-color: rgba(0, 0, 0, 0.5);
     color: whitesmoke;
     text-align: center;
+    margin: 10% auto;
     max-width: 500px;
     border-radius: 5px 120px;
     box-shadow: -10px 10px 28px 15px rgba(255, 0, 0, 0.7),

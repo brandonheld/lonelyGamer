@@ -1,4 +1,6 @@
 .loginBackground {
+    height: 100%;
+    overflow-y: auto;
     position: fixed;
     z-index: 10;
     top: 0;
@@ -8,12 +10,8 @@
     background-color: black;
 }
 .loginContainer {
-    position: relative;
     padding: 50px;
     margin: 0 auto;
-    top:30%;
-    display: flex;
-    flex-direction: column;
     width: 100%;
     max-width: 360px;
     min-width: 185px;
