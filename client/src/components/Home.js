@@ -19,20 +19,20 @@ function Home() {
     
     const showUser = () => {
         const userInfo =  document.getElementById("user")
-        const feedInfo = document.getElementById('test')
+        const feedInfo = document.getElementById('homePage')
         userInfo.style.display = 'flex'
         feedInfo.style.display = 'none'
     };
     
     const close = () => {
         const userInfo =  document.getElementById("user")
-        const feedInfo = document.getElementById('test')
+        const feedInfo = document.getElementById('homePage')
         userInfo.style.display = 'none'
         feedInfo.style.display = 'grid'
     }
     const size = () => {
         const userInfo =  document.getElementById("user")
-        const feedInfo = document.getElementById('test')
+        const feedInfo = document.getElementById('homePage')
         if (window.innerWidth > 700) {
             userInfo.style.display = 'flex'
             feedInfo.style.display = 'grid'
@@ -55,7 +55,7 @@ function Home() {
                     <Profile />
                     <Chat />
                 </div>
-                <div className='homeContainer__right' id='test'>
+                <div className='homeContainer__right' id='homePage'>
                     <button id='modalButton' onClick={showUser}>{currentUser.username}</button>
                     <button id='logout' onClick={signOut}>Sign Out</button>
                     <div className='links'> 
