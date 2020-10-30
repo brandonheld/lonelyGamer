@@ -1,4 +1,4 @@
-## Welcome to [Lonely Gamer](https://lonely-gamer.herokuapp.com/)! 
+## Welcome to [Lonely Gamer](https://lonely-gamer.herokuapp.com/)! Check out Lonely-Gamer wiki [here](https://github.com/brandonheld/lonelyGamer/wiki).
 <br>
 Have you ever had a time when you wanted to play your favorite online game but none of your friends were online so you were forced to use in game match making? As we all know in game match matching can feel like winning the lottery when you finally get matched with a good player. Lonely Gamer sets out to slove this issue.
 <br> 
