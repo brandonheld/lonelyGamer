@@ -68,7 +68,7 @@ function Home() {
                         <a href="https://angel.co/u/brandon-held">
                             <i className="fab fa-angellist fa-3x"></i>
                         </a>
-                        <a href="https://brandonheld.netlify.app/">
+                        <a href="https://brandonheld.dev/">
                             <i className="fas fa-desktop fa-3x"></i>
                         </a>
                     </div>
