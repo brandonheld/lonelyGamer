@@ -10,7 +10,7 @@ Have you ever had a time when you wanted to play your favorite online game but n
 * Redux
 * Flask
 * SQLAlchemy 
-* Socket io
+* Socket.io
 * Postgres 
 * HTML5 
 * CSS3
